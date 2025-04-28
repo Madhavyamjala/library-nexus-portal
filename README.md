@@ -54,7 +54,7 @@ To get a local copy up and running, follow these steps:
     * Install ` npm `.
 2.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/Madhavyamjala/library-nexus-portal.git](https://github.com/Madhavyamjala/library-nexus-portal.git)
+    git clone https://github.com/Madhavyamjala/library-nexus-portal.git
     cd library-nexus-portal/main
     ```
 3.  **Install dependencies:**
