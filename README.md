@@ -1,73 +1,91 @@
-# Welcome to your Lovable project
+# Library Portal
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/99e27e18-baca-4941-974b-833a59d3e40f
+Library Portal is a comprehensive, web-based Library Management System (LMS) designed to streamline the management of library resources, members, and circulation processes. It provides distinct interfaces and functionalities for both librarians (administrators) and library members.
 
-## How can I edit this code?
+This system aims to offer a robust, scalable, and user-friendly solution for managing book catalogs, member information, borrowing and returning processes, fines, and reporting for a medium-sized library.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+The portal includes the following core modules and features:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/99e27e18-baca-4941-974b-833a59d3e40f) and start prompting.
+* **Book Catalog Management:**
+    * Add, update, and delete book records (Title, Author, ISBN, Publisher, Year, Genre, Quantity, Location).
+    * Upload book cover images.
+    * Categorize and tag books.
+* **Member Management:**
+    * Register, update, suspend, and activate member accounts.
+    * View member details and borrowing history.
+* **Circulation Management:**
+    * Check out books to members.
+    * Check in returned books.
+    * Manage loan periods and due dates.
+    * Process book renewals.
+    * Handle reservations and holds for books.
+* **Fine Management:**
+    * Automatic calculation and tracking of overdue fines.
+    * Record fine payments.
+* **Search & Discovery:**
+    * Powerful search capabilities (title, author, ISBN, genre, keyword).
+    * Filtering and sorting of search results.
+    * Real-time book availability status.
+* **Reporting:**
+    * Generate reports on overdue books, popular titles, member activity, inventory, and fines.
+* **User Roles:**
+    * **Librarian/Admin:** Full administrative access.
+    * **Member:** Access to search, view personal history, place holds, etc.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology Stack
 
-**Use your preferred IDE**
+*(Note: Replace this section based on the actual technologies used or chosen by the AI)*
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+This project is envisioned to use a modern web stack, potentially including:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+* **Backend:**  Java
+* **Frontend:** React & Vue.js
 
-Follow these steps:
+## Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+To get a local copy up and running, follow these steps:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1.  **Prerequisites:**
+    * Ensure you have ` Node.js ` installed.
+    * Install ` npm `.
+2.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Madhavyamjala/library-nexus-portal.git](https://github.com/Madhavyamjala/library-nexus-portal.git)
+    cd library-nexus-portal/main
+    ```
+3.  **Install dependencies:**
+    * `npm install` 
+4.  **Run the application:**
+    * **Frontend:** `npm start` / `npm run dev` (or equivalent)
+5.  Access the portal at `http://localhost:[PORT]`.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Usage
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+* **Librarians:** Access the admin dashboard to manage books, members, circulation, fines, and view reports.
+* **Members:** Log in to search the catalog, view their checked-out books and due dates, check fines, place holds, and manage their profile.
 
-**Edit a file directly in GitHub**
+## Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Contributions are welcome! If you'd like to contribute, please follow these steps:
 
-**Use GitHub Codespaces**
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+*(Please ensure your code adheres to the project's coding standards - add link to standards if applicable)*
 
-## What technologies are used for this project?
+## License
 
-This project is built with:
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contact
 
-## How can I deploy this project?
+Yamjala Ravi Chandra Madhav - yamjalamadhav@gmail.com 
 
-Simply open [Lovable](https://lovable.dev/projects/99e27e18-baca-4941-974b-833a59d3e40f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Project Link: https://github.com/Madhavyamjala/library-nexus-portal.git
