@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             <div className="h-12 w-12 bg-primary rounded-full flex items-center justify-center mb-2">
               <BookOpen className="h-6 w-6 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold">Library Nexus Portal</CardTitle>
+            <CardTitle className="text-2xl font-bold">Library Portal</CardTitle>
             <CardDescription>
               Sign in to manage your library
             </CardDescription>

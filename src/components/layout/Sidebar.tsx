@@ -66,7 +66,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     )}>
       <div className="p-4 flex justify-between items-center">
         {!collapsed && (
-          <h1 className="text-xl font-bold text-primary">LibraryNexus</h1>
+          <h1 className="text-xl font-bold text-primary">Library Portal</h1>
         )}
         <Button 
           variant="ghost" 
