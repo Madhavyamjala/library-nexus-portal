@@ -9,7 +9,123 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      books: {
+        Row: {
+          author: string
+          available_quantity: number
+          created_at: string
+          genre: string
+          id: string
+          isbn: string
+          publication_year: number
+          title: string
+          total_quantity: number
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          available_quantity?: number
+          created_at?: string
+          genre: string
+          id?: string
+          isbn: string
+          publication_year: number
+          title: string
+          total_quantity?: number
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          available_quantity?: number
+          created_at?: string
+          genre?: string
+          id?: string
+          isbn?: string
+          publication_year?: number
+          title?: string
+          total_quantity?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      borrow_records: {
+        Row: {
+          book_id: string
+          created_at: string
+          due_date: string
+          fine: number | null
+          id: string
+          issue_date: string
+          member_id: string
+          return_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          book_id: string
+          created_at?: string
+          due_date: string
+          fine?: number | null
+          id?: string
+          issue_date?: string
+          member_id: string
+          return_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          book_id?: string
+          created_at?: string
+          due_date?: string
+          fine?: number | null
+          id?: string
+          issue_date?: string
+          member_id?: string
+          return_date?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "borrow_records_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "books"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "borrow_records_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      members: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
