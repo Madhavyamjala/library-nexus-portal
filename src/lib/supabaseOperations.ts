@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import {
   Book, Member, BorrowRecord,
@@ -14,7 +13,7 @@ export async function addBookToSupabase(book: Partial<Book>) {
     .insert(bookInsert)
     .select()
     .single();
-  
+
   if (error) throw error;
   return data;
 }
@@ -33,7 +32,7 @@ export async function updateBookInSupabase(id: string, book: Partial<Book>) {
     .eq('id', id)
     .select()
     .single();
-  
+
   if (error) throw error;
   return data;
 }
@@ -43,7 +42,7 @@ export async function deleteBookFromSupabase(id: string) {
     .from('books')
     .delete()
     .eq('id', id);
-  
+
   if (error) throw error;
   return true;
 }
@@ -56,7 +55,7 @@ export async function addMemberToSupabase(member: Partial<Member>) {
     .insert(memberInsert)
     .select()
     .single();
-  
+
   if (error) throw error;
   return data;
 }
@@ -72,7 +71,7 @@ export async function updateMemberInSupabase(id: string, member: Partial<Member>
     .eq('id', id)
     .select()
     .single();
-  
+
   if (error) throw error;
   return data;
 }
@@ -82,7 +81,7 @@ export async function deleteMemberFromSupabase(id: string) {
     .from('members')
     .delete()
     .eq('id', id);
-  
+
   if (error) throw error;
   return true;
 }
@@ -95,15 +94,14 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
     .insert(recordInsert)
     .select()
     .single();
-  
+
   if (error) throw error;
-  
-  // Use type assertion to call the RPC function with the correct type
-  await supabase.rpc<null, { book_id: string }>(
-    'decrease_book_availability', 
-    { book_id: record.bookId as string }
-  );
-  
+
+  // RPC call without type parameter
+  await supabase.rpc('decrease_book_availability', {
+    book_id: record.bookId as string
+  });
+
   return data;
 }
 
@@ -113,9 +111,9 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
     .select('book_id')
     .eq('id', id)
     .single();
-  
+
   if (fetchError) throw fetchError;
-  
+
   const { data, error } = await supabase
     .from('borrow_records')
     .update({
@@ -125,14 +123,13 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
     .eq('id', id)
     .select()
     .single();
-  
+
   if (error) throw error;
-  
-  // Use type assertion to call the RPC function with the correct type
-  await supabase.rpc<null, { book_id: string }>(
-    'increase_book_availability', 
-    { book_id: record.book_id }
-  );
-  
+
+  // RPC call without type parameter
+  await supabase.rpc('increase_book_availability', {
+    book_id: record.book_id
+  });
+
   return data;
 }
