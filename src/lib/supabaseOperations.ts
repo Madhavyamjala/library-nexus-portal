@@ -1,4 +1,3 @@
-
 import { supabase } from '@/integrations/supabase/client';
 import {
   Book, Member, BorrowRecord,
@@ -98,10 +97,9 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
   
   if (error) throw error;
   
-  // Fixed RPC call with correct typing
-  await supabase.rpc('decrease_book_availability', { 
-    book_id: record.bookId as string 
-  });
+  // Fix: Properly type the parameters for the RPC function call
+  const params: { book_id: string } = { book_id: record.bookId as string };
+  await supabase.rpc('decrease_book_availability', params);
   
   return data;
 }
@@ -127,10 +125,9 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
   
   if (error) throw error;
   
-  // Fixed RPC call with correct typing
-  await supabase.rpc('increase_book_availability', { 
-    book_id: record.book_id as string 
-  });
+  // Fix: Properly type the parameters for the RPC function call
+  const params: { book_id: string } = { book_id: record.book_id };
+  await supabase.rpc('increase_book_availability', params);
   
   return data;
 }
