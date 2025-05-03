@@ -97,8 +97,11 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
   
   if (error) throw error;
   
-  // Update the book's available quantity
-  await supabase.rpc('decrease_book_availability', { book_id: record.bookId });
+  // Update the book's available quantity using properly typed parameters
+  await supabase
+    .rpc('decrease_book_availability', { 
+      book_id: record.bookId as string
+    });
   
   return data;
 }
@@ -124,8 +127,11 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
   
   if (error) throw error;
   
-  // Update the book's available quantity
-  await supabase.rpc('increase_book_availability', { book_id: record.book_id });
+  // Update the book's available quantity using properly typed parameters
+  await supabase
+    .rpc('increase_book_availability', { 
+      book_id: record.book_id as string
+    });
   
   return data;
 }
