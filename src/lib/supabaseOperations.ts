@@ -2,7 +2,8 @@
 import { supabase } from '@/integrations/supabase/client';
 import {
   Book, Member, BorrowRecord,
-  convertToBookInsert, convertToMemberInsert, convertToBorrowRecordInsert
+  convertToBookInsert, convertToMemberInsert, convertToBorrowRecordInsert,
+  SupabaseRpcFunctions
 } from '@/types/supabase-types';
 
 // Book operations
@@ -97,13 +98,10 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
   
   if (error) throw error;
   
-  // Use type assertion to specify the expected parameter type
-  await supabase
-    .rpc('decrease_book_availability', { 
-      book_id: record.bookId as string
-    } as {
-      book_id: string
-    });
+  // Call RPC with proper typing
+  await supabase.rpc<keyof SupabaseRpcFunctions>('decrease_book_availability', { 
+    book_id: record.bookId as string 
+  });
   
   return data;
 }
@@ -129,13 +127,10 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
   
   if (error) throw error;
   
-  // Use type assertion to specify the expected parameter type 
-  await supabase
-    .rpc('increase_book_availability', { 
-      book_id: record.book_id as string
-    } as {
-      book_id: string
-    });
+  // Call RPC with proper typing
+  await supabase.rpc<keyof SupabaseRpcFunctions>('increase_book_availability', { 
+    book_id: record.book_id as string 
+  });
   
   return data;
 }
