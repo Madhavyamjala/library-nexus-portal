@@ -98,10 +98,11 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
   
   if (error) throw error;
   
-  // Properly type and call the RPC function
-  await supabase.rpc('decrease_book_availability' as any, {
-    book_id: record.bookId as string
-  });
+  // Use type assertion to call the RPC function with the correct type
+  await supabase.rpc<null, { book_id: string }>(
+    'decrease_book_availability', 
+    { book_id: record.bookId as string }
+  );
   
   return data;
 }
@@ -127,10 +128,11 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
   
   if (error) throw error;
   
-  // Properly type and call the RPC function
-  await supabase.rpc('increase_book_availability' as any, {
-    book_id: record.book_id
-  });
+  // Use type assertion to call the RPC function with the correct type
+  await supabase.rpc<null, { book_id: string }>(
+    'increase_book_availability', 
+    { book_id: record.book_id }
+  );
   
   return data;
 }

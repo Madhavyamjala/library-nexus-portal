@@ -18,8 +18,8 @@ export type BorrowRecordUpdate = Database['public']['Tables']['borrow_records'][
 
 // Define types for our RPC functions
 export interface SupabaseRpcFunctions {
-  decrease_book_availability: (params: { book_id: string }) => Promise<void>;
-  increase_book_availability: (params: { book_id: string }) => Promise<void>;
+  decrease_book_availability: (params: { book_id: string }) => Promise<null>;
+  increase_book_availability: (params: { book_id: string }) => Promise<null>;
 }
 
 // Convert snake_case database columns to camelCase for frontend use

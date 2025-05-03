@@ -35,6 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const parsedUser = JSON.parse(storedUser);
         setUser(parsedUser);
         setIsAuthenticated(true);
+        console.log('User restored from localStorage:', parsedUser);
       } catch (error) {
         console.error('Failed to parse stored user', error);
         localStorage.removeItem('current_user');
@@ -46,6 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const foundUser = findUser(username, password);
     
     if (foundUser) {
+      console.log('Login successful:', foundUser);
       setUser(foundUser);
       setIsAuthenticated(true);
       localStorage.setItem('current_user', JSON.stringify(foundUser));
@@ -55,6 +57,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       return true;
     } else {
+      console.error('Login failed for username:', username);
       toast({
         title: "Login Failed",
         description: "Invalid username or password",

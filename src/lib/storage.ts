@@ -1,4 +1,3 @@
-
 import { Book, Member, BorrowRecord, User } from '@/types';
 
 // Default users
@@ -130,8 +129,11 @@ const STORAGE_KEYS = {
 
 // Initialize storage with default data if empty
 export const initializeStorage = () => {
+  console.log('Initializing storage');
+  
   // Initialize users
   if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
+    console.log('Setting default users:', defaultUsers);
     localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(defaultUsers));
   }
 
@@ -163,14 +165,21 @@ export const setToStorage = <T>(key: string, data: T[]): void => {
 };
 
 // User-specific functions
-export const getUsers = (): User[] => getFromStorage<User>(STORAGE_KEYS.USERS);
+export const getUsers = (): User[] => {
+  const users = getFromStorage<User>(STORAGE_KEYS.USERS);
+  console.log('Retrieved users:', users);
+  return users;
+};
 
 export const setUsers = (users: User[]): void => 
   setToStorage(STORAGE_KEYS.USERS, users);
 
 export const findUser = (username: string, password: string): User | undefined => {
+  console.log('Finding user with username:', username);
   const users = getUsers();
-  return users.find(user => user.username === username && user.password === password);
+  const foundUser = users.find(user => user.username === username && user.password === password);
+  console.log('Found user:', foundUser);
+  return foundUser;
 };
 
 // Book-specific functions
