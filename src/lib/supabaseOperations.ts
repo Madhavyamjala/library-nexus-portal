@@ -97,10 +97,12 @@ export async function addBorrowRecordToSupabase(record: Partial<BorrowRecord>) {
   
   if (error) throw error;
   
-  // Update the book's available quantity using properly typed parameters
+  // Use type assertion to specify the expected parameter type
   await supabase
     .rpc('decrease_book_availability', { 
       book_id: record.bookId as string
+    } as {
+      book_id: string
     });
   
   return data;
@@ -127,10 +129,12 @@ export async function returnBookInSupabase(id: string, returnDate: string, fine?
   
   if (error) throw error;
   
-  // Update the book's available quantity using properly typed parameters
+  // Use type assertion to specify the expected parameter type 
   await supabase
     .rpc('increase_book_availability', { 
       book_id: record.book_id as string
+    } as {
+      book_id: string
     });
   
   return data;
